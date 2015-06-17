@@ -20,7 +20,7 @@ import static org.junit.Assert.*;
 public class SampleSauceTest {
     
     @Test
-    public void testGithubUsersNdmanvar()
+    public void testPriceLineAutosuggest()
           throws ClientProtocolException, IOException, JSONException{
        HttpUriRequest request = new HttpGet( "http://www.priceline.com/svcs/ac/index/hotels/san/6/3/3/3" );
        

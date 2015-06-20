@@ -18,20 +18,36 @@ import static org.junit.Assert.*;
  * @author Neil Manvar
  */
 public class SampleSauceTest {
-    
+
     @Test
-    public void testPriceLineAutosuggest()
+    public void testPriceLineAutosuggestSanFrancisco()
           throws ClientProtocolException, IOException, JSONException{
        HttpUriRequest request = new HttpGet( "http://www.priceline.com/svcs/ac/index/hotels/san/6/3/3/3" );
-       
+
        HttpResponse httpResponse =	 HttpClientBuilder.create().build().execute( request );
-       
+
        String bodyAsString = EntityUtils.toString(httpResponse.getEntity());
-       
+
        JSONObject obj = new JSONObject(bodyAsString);
-       
+
        String itemName = obj.getJSONArray("searchItems").getJSONObject(0).getString("itemName");
-       
+
        assertEquals("San Francisco, CA", itemName);
+    }
+
+    @Test
+    public void testPriceLineAutosuggestSanDiego()
+          throws ClientProtocolException, IOException, JSONException{
+       HttpUriRequest request = new HttpGet( "http://www.priceline.com/svcs/ac/index/hotels/diego/6/3/3/3" );
+
+       HttpResponse httpResponse =   HttpClientBuilder.create().build().execute( request );
+
+       String bodyAsString = EntityUtils.toString(httpResponse.getEntity());
+
+       JSONObject obj = new JSONObject(bodyAsString);
+
+       String itemName = obj.getJSONArray("searchItems").getJSONObject(0).getString("itemName");
+
+       assertEquals("San Diego, CA", itemName);
     }
 }

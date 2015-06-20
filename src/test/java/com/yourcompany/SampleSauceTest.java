@@ -50,5 +50,4 @@ public class SampleSauceTest {
 
        assertEquals("San Diego, CA", itemName);
     }
-
 }
